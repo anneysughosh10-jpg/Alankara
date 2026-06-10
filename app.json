@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Alankara Textile POS",
+    "slug": "alankara-textile-pos",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#2C0A0A"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alankaratextile.pos"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#2C0A0A"
+      },
+      "permissions": ["android.permission.CAMERA"],
+      "package": "com.alankaratextile.pos"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Alankara Textile POS to access camera for barcode scanning."
+        }
+      ],
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "newArchEnabled": false
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a9a7d602-4999-4d1f-96eb-7058af2462ac"
+      }
+    }
+  }
+}
