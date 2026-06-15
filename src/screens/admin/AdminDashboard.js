@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity,
-  RefreshControl, StatusBar, Alert
+  RefreshControl, StatusBar, Alert, Image
 } from 'react-native';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
@@ -104,7 +104,7 @@ export default function AdminDashboard({ userId, userData, userRole }) {
 
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <View style={styles.logoSmall}><Text style={styles.logoSmallText}>AT</Text></View>
+          <Image source={require('../../assets/icon.png')} style={styles.logoSmall} />
           <View>
             <Text style={styles.headerTitle}>
               {userRole === 'superadmin' ? 'Super Admin' : 'Admin'} Dashboard
@@ -224,8 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary, paddingHorizontal: 16, paddingTop: 50, paddingBottom: 16
   },
   headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  logoSmall: { width: 36, height: 36, borderRadius: 8, backgroundColor: 'rgba(255,255,255,0.2)', justifyContent: 'center', alignItems: 'center' },
-  logoSmallText: { fontSize: 14, fontWeight: 'bold', color: COLORS.white },
+  logoSmall: { width: 40, height: 40, borderRadius: 10 },
   headerTitle: { fontSize: 16, fontWeight: 'bold', color: COLORS.white },
   headerSub: { fontSize: 11, color: 'rgba(255,255,255,0.7)', marginTop: 1 },
   scroll: { flex: 1 },

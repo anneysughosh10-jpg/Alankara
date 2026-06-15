@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity,
   StyleSheet, Alert, KeyboardAvoidingView,
-  Platform, ScrollView, StatusBar
+  Platform, ScrollView, StatusBar, Image
 } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebase';
@@ -52,9 +52,7 @@ export default function LoginScreen() {
 
         {/* Header */}
         <View style={styles.header}>
-          <View style={styles.logoBox}>
-            <Text style={styles.logoText}>AT</Text>
-          </View>
+          <Image source={require('../../assets/icon.png')} style={styles.logoBox} />
           <Text style={styles.companyName}>{COMPANY.name}</Text>
           <Text style={styles.subtitle}>Point of Sale Management System</Text>
           <View style={styles.gstBadge}>
@@ -133,12 +131,9 @@ const styles = StyleSheet.create({
   scroll: { flexGrow: 1, justifyContent: 'center', padding: 24 },
   header: { alignItems: 'center', marginBottom: 32 },
   logoBox: {
-    width: 80, height: 80, borderRadius: 20,
-    backgroundColor: COLORS.white, justifyContent: 'center',
-    alignItems: 'center', marginBottom: 16,
-    ...SHADOWS.medium
+    width: 90, height: 90, borderRadius: 20,
+    marginBottom: 16,
   },
-  logoText: { fontSize: 32, fontWeight: 'bold', color: COLORS.primary },
   companyName: { fontSize: 28, fontWeight: 'bold', color: COLORS.white, letterSpacing: 1 },
   subtitle: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   gstBadge: {

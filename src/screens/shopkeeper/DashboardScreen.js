@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   View, Text, ScrollView, StyleSheet,
-  TouchableOpacity, RefreshControl, StatusBar, Alert
+  TouchableOpacity, RefreshControl, StatusBar, Alert, Image
 } from 'react-native';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
@@ -94,7 +94,7 @@ export default function DashboardScreen({ userId, userData }) {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <View style={styles.logoSmall}><Text style={styles.logoSmallText}>AT</Text></View>
+          <Image source={require('../../assets/icon.png')} style={styles.logoSmall} />
           <View>
             <Text style={styles.shopName}>{userData?.shopName || 'My Shop'}</Text>
             <Text style={styles.shopMeta}>{userData?.shopId} · {userData?.city || 'Hyderabad'}</Text>
@@ -207,12 +207,7 @@ const styles = StyleSheet.create({
     paddingTop: 50, paddingBottom: 16
   },
   headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  logoSmall: {
-    width: 36, height: 36, borderRadius: 8,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    justifyContent: 'center', alignItems: 'center'
-  },
-  logoSmallText: { fontSize: 14, fontWeight: 'bold', color: COLORS.white },
+  logoSmall: { width: 40, height: 40, borderRadius: 10 },
   shopName: { fontSize: 16, fontWeight: 'bold', color: COLORS.white },
   shopMeta: { fontSize: 11, color: 'rgba(255,255,255,0.7)', marginTop: 1 },
   logoutBtn: { padding: 8 },

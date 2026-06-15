@@ -2,7 +2,7 @@ import { registerRootComponent } from 'expo';
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, Text, StyleSheet, Image } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { auth, db } from './src/config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -55,9 +55,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <View style={styles.loadingContainer}>
-          <View style={styles.logoContainer}>
-            <Text style={styles.logoText}>AT</Text>
-          </View>
+          <Image source={require('./assets/icon.png')} style={styles.logoContainer} />
           <Text style={styles.loadingBrand}>{COMPANY.name}</Text>
           <Text style={styles.loadingSubtitle}>Point of Sale System</Text>
           <ActivityIndicator size="large" color={COLORS.primary} style={{ marginTop: 32 }} />
@@ -99,18 +97,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   logoContainer: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     borderRadius: 20,
-    backgroundColor: COLORS.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
     marginBottom: 16,
-  },
-  logoText: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: COLORS.white,
   },
   loadingBrand: {
     fontSize: 28,
