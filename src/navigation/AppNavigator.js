@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../config/theme';
 import { View, Text, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // Shopkeeper Screens
 import DashboardScreen from '../screens/shopkeeper/DashboardScreen';
@@ -38,10 +39,15 @@ const TabIcon = ({ name, focused, label }) => (
 export default function AppNavigator({ userRole, userId, userData }) {
   const isAdmin = userRole === 'admin' || userRole === 'superadmin';
   const isSuperAdmin = userRole === 'superadmin';
+  const insets = useSafeAreaInsets();
 
   const tabBarOptions = {
     headerShown: false,
-    tabBarStyle: styles.tabBar,
+    tabBarStyle: {
+      ...styles.tabBar,
+      height: 65 + insets.bottom,
+      paddingBottom: 8 + insets.bottom,
+    },
     tabBarShowLabel: false,
   };
 
