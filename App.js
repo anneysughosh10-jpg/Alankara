@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { auth, db } from './src/config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -32,6 +33,7 @@ export default function App() {
             setUserRole(data.role);
             setUserData(data);
             setUser(firebaseUser);
+            setReady(true);
           } else {
             setReady(true);
           }
@@ -51,37 +53,41 @@ export default function App() {
 
   if (!ready) {
     return (
-      <View style={styles.loadingContainer}>
-        <View style={styles.logoContainer}>
-          <Text style={styles.logoText}>AT</Text>
+      <SafeAreaProvider>
+        <View style={styles.loadingContainer}>
+          <View style={styles.logoContainer}>
+            <Text style={styles.logoText}>AT</Text>
+          </View>
+          <Text style={styles.loadingBrand}>{COMPANY.name}</Text>
+          <Text style={styles.loadingSubtitle}>Point of Sale System</Text>
+          <ActivityIndicator size="large" color={COLORS.primary} style={{ marginTop: 32 }} />
+          <Text style={styles.loadingText}>Initializing...</Text>
         </View>
-        <Text style={styles.loadingBrand}>{COMPANY.name}</Text>
-        <Text style={styles.loadingSubtitle}>Point of Sale System</Text>
-        <ActivityIndicator size="large" color={COLORS.primary} style={{ marginTop: 32 }} />
-        <Text style={styles.loadingText}>Initializing...</Text>
-      </View>
+      </SafeAreaProvider>
     );
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!user ? (
-          <Stack.Screen name="Login" component={LoginScreen} />
-        ) : (
-          <Stack.Screen name="Main">
-            {props => (
-              <AppNavigator
-                {...props}
-                userRole={userRole}
-                userId={user.uid}
-                userData={userData}
-              />
-            )}
-          </Stack.Screen>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {!user ? (
+            <Stack.Screen name="Login" component={LoginScreen} />
+          ) : (
+            <Stack.Screen name="Main">
+              {props => (
+                <AppNavigator
+                  {...props}
+                  userRole={userRole}
+                  userId={user.uid}
+                  userData={userData}
+                />
+              )}
+            </Stack.Screen>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 

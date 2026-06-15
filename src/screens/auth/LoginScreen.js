@@ -24,11 +24,19 @@ export default function LoginScreen() {
     try {
       await signInWithEmailAndPassword(auth, email.trim(), password);
     } catch (error) {
-      let message = 'Login failed. Please check your credentials.';
-      if (error.code === 'auth/user-not-found') message = 'No account found with this email.';
-      if (error.code === 'auth/wrong-password') message = 'Incorrect password. Please try again.';
-      if (error.code === 'auth/invalid-email') message = 'Please enter a valid email address.';
-      if (error.code === 'auth/too-many-requests') message = 'Too many failed attempts. Please try again later.';
+      let message = 'Login failed. Please try again.';
+      const code = error.code;
+      if (code === 'auth/invalid-credential' || code === 'auth/wrong-password' || code === 'auth/user-not-found') {
+        message = 'Incorrect email or password. Please try again.';
+      } else if (code === 'auth/invalid-email') {
+        message = 'Please enter a valid email address.';
+      } else if (code === 'auth/too-many-requests') {
+        message = 'Too many failed attempts. Please try again later.';
+      } else if (code === 'auth/network-request-failed') {
+        message = 'No internet connection. Please check your network and try again.';
+      } else if (code === 'auth/user-disabled') {
+        message = 'This account has been disabled. Contact your administrator.';
+      }
       Alert.alert('Login Failed', message);
     }
     setLoading(false);
