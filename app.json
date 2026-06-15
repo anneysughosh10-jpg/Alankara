@@ -37,6 +37,9 @@
         }
       ]
     ],
+    "web": {
+      "publicPath": "/Alankara/"
+    },
     "extra": {
       "eas": {
         "projectId": "a9a7d602-4999-4d1f-96eb-7058af2462ac"
