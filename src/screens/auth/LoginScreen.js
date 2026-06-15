@@ -52,7 +52,7 @@ export default function LoginScreen() {
 
         {/* Header */}
         <View style={styles.header}>
-          <Image source={require('../../assets/icon.png')} style={styles.logoBox} />
+          <Image source={require('../../../assets/icon.png')} style={styles.logoBox} />
           <Text style={styles.companyName}>{COMPANY.name}</Text>
           <Text style={styles.subtitle}>Point of Sale Management System</Text>
           <View style={styles.gstBadge}>

@@ -94,7 +94,7 @@ export default function DashboardScreen({ userId, userData }) {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Image source={require('../../assets/icon.png')} style={styles.logoSmall} />
+          <Image source={require('../../../assets/icon.png')} style={styles.logoSmall} />
           <View>
             <Text style={styles.shopName}>{userData?.shopName || 'My Shop'}</Text>
             <Text style={styles.shopMeta}>{userData?.shopId} · {userData?.city || 'Hyderabad'}</Text>

@@ -104,7 +104,7 @@ export default function AdminDashboard({ userId, userData, userRole }) {
 
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Image source={require('../../assets/icon.png')} style={styles.logoSmall} />
+          <Image source={require('../../../assets/icon.png')} style={styles.logoSmall} />
           <View>
             <Text style={styles.headerTitle}>
               {userRole === 'superadmin' ? 'Super Admin' : 'Admin'} Dashboard
