@@ -4,10 +4,12 @@
     "slug": "alankara-textile-pos",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#2C0A0A"
+      "backgroundColor": "#C9A84C"
     },
     "ios": {
       "supportsTablet": true,
@@ -15,7 +17,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#2C0A0A"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#C9A84C"
       },
       "permissions": ["android.permission.CAMERA"],
       "package": "com.alankaratextile.pos"
